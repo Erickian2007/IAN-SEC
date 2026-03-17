@@ -21,7 +21,7 @@ from core.crypto import CipherPacket, DecryptionError, decrypt, encrypt
 
 # ── Constants ────────────────────────────────────────────────────────────────
 
-VAULT_PATH = Path.home() / ".cryptian.json"
+VAULT_PATH = Path.home() / ".iansec.json"
 
 
 # ── Exceptions ───────────────────────────────────────────────────────────────

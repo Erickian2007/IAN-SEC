@@ -1,7 +1,7 @@
 """
 ui/menu.py
 
-Terminal interface for Cryptian.
+Terminal interface for IAN-SEC.
 
 All user interaction lives here. Business logic is delegated to
 the core layer — this module only handles input/output.
@@ -71,7 +71,7 @@ def _draw_menu() -> None:
     print(_menu_border("╔════════════════════════════════╗"))
     print(
         _menu_border("║") +
-        f"  {Color.accent('🔐  C R Y P T I A N')}              " +
+        f"  {Color.accent('🔐  I A N - S E C')}              " +
         _menu_border("║")
     )
     print(_menu_border("╠════════════════════════════════╣"))
@@ -214,7 +214,7 @@ def _handle_destinations(backup_manager: BackupManager) -> None:
 # ── Main loop ────────────────────────────────────────────────────────────────
 
 def run() -> None:
-    """Entry point for the Cryptian UI."""
+    """Entry point for the IAN-SEC UI."""
     _clear()
     play_opening()
 
@@ -236,7 +236,7 @@ def run() -> None:
         choice = input(f"\n  {Color.info('›')} Option: ").strip()
 
         if choice == "8":
-            print(f"\n  {Color.accent('Cryptian closed.')} {Color.rgb(60,140,255,'🔒')}\n")
+            print(f"\n  {Color.accent('IAN-SEC closed.')} {Color.rgb(60,140,255,'🔒')}\n")
             break
 
         handler = handlers.get(choice)

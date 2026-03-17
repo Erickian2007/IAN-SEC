@@ -24,7 +24,7 @@ from ui.colors import Color
 
 # ── Constants ────────────────────────────────────────────────────────────────
 
-CONFIG_PATH = Path.home() / ".cryptian_config.json"
+CONFIG_PATH = Path.home() / ".iansec_config.json"
 
 
 # ── BackupManager class ──────────────────────────────────────────────────────
