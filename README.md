@@ -1,14 +1,14 @@
-# 🔐 Cryptian
+# 🔐 IAN-SEC
 
 > Cofre de senhas pessoal — offline, terminal, sem servidor, sem nuvem.
 
 ```
- ██████╗██████╗ ██╗   ██╗██████╗ ████████╗██╗ █████╗ ███╗   ██╗
-██╔════╝██╔══██╗╚██╗ ██╔╝██╔══██╗╚══██╔══╝██║██╔══██╗████╗  ██║
-██║     ██████╔╝ ╚████╔╝ ██████╔╝   ██║   ██║███████║██╔██╗ ██║
-██║     ██╔══██╗  ╚██╔╝  ██╔═══╝    ██║   ██║██╔══██║██║╚██╗██║
-╚██████╗██║  ██║   ██║   ██║        ██║   ██║██║  ██║██║ ╚████║
- ╚═════╝╚═╝  ╚═╝   ╚═╝   ╚═╝        ╚═╝   ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝
+    ██╗ █████╗ ███╗  ██╗       ███████╗███████╗ ██████╗
+    ██║██╔══██╗████╗ ██║       ██╔════╝██╔════╝██╔════╝
+    ██║███████║██╔██╗██║ █████╗███████╗█████╗  ██║     
+    ██║██╔══██║██║╚████║ ╚════╝╚════██║██╔══╝  ██║     
+    ██║██║  ██║██║ ╚███║       ███████║███████╗╚██████╗
+    ╚═╝╚═╝  ╚═╝╚══╝ ╚══╝       ╚══════╝╚══════╝ ╚═════╝
 ```
 
 ---
@@ -22,13 +22,13 @@ Gerenciadores online como LastPass ou Bitwarden são convenientes, mas carregam 
 - Você depende da internet para acessar suas próprias senhas
 - Você confia cegamente na implementação criptográfica deles
 
-O Cryptian resolve isso de forma diferente: **o cofre vive na sua máquina**. Nenhum servidor. Nenhuma conta. Nenhuma dependência externa. Se alguém roubar o arquivo `.json`, não consegue nada sem a sua senha mestra — matematicamente.
+O IAN-SEC resolve isso de forma diferente: **o cofre vive na sua máquina**. Nenhum servidor. Nenhuma conta. Nenhuma dependência externa. Se alguém roubar o arquivo `.json`, não consegue nada sem a sua senha mestra — matematicamente.
 
 ---
 
 ## Como funciona
 
-O Cryptian usa uma cadeia de três camadas de segurança:
+O IAN-SEC usa uma cadeia de três camadas de segurança:
 
 ```
 sua senha mestra (humana, memorável)
@@ -47,7 +47,7 @@ sua senha mestra (humana, memorável)
   dado cifrado (ilegível sem a chave)
         │
         ▼
-  salvo em ~/.cryptian.json
+  salvo em ~/.iansec.json
 ```
 
 ### PBKDF2 + Salt
@@ -66,7 +66,7 @@ O nonce (number used once) é outro número aleatório de 12 bytes gerado por op
 
 > *"Um sistema criptográfico deve ser seguro mesmo que tudo sobre ele, exceto a chave, seja de conhecimento público."*
 
-O código do Cryptian é aberto. Os algoritmos são públicos. A segurança está **inteiramente na sua senha mestra** — não no sigilo do sistema.
+O código do IAN-SEC é aberto. Os algoritmos são públicos. A segurança está **inteiramente na sua senha mestra** — não no sigilo do sistema.
 
 ---
 
@@ -93,7 +93,7 @@ sudo apt install xclip
 
 **Rodar:**
 ```bash
-python cryptian.py
+python iansec.py
 ```
 
 ---
@@ -125,18 +125,18 @@ Mesma senha mestra, resultados completamente diferentes por serviço. Se um site
 
 ## Backup
 
-O arquivo `~/.cryptian.json` **pode ser copiado para qualquer lugar sem risco**. Sem a senha mestra, é lixo criptografado. Você pode jogá-lo no Google Drive, Dropbox, pen drive, e-mail — não importa.
+O arquivo `~/.iansec.json` **pode ser copiado para qualquer lugar sem risco**. Sem a senha mestra, é lixo criptografado. Você pode jogá-lo no Google Drive, Dropbox, pen drive, e-mail — não importa.
 
 ```bash
 # backup manual
-cp ~/.cryptian.json /media/seu-pendrive/
+cp ~/.iansec.json /media/seu-pendrive/
 
 # ou use a opção 6 do menu para automatizar
 ```
 
 O backup automático salva com timestamp:
 ```
-cryptian_backup_20260317_143022.json
+IAN-SEC_backup_20260317_143022.json
 ```
 
 ---
@@ -151,7 +151,7 @@ cryptian_backup_20260317_143022.json
 
 **O que você precisa proteger:**
 - Sua senha mestra — sem ela não há recuperação
-- O arquivo `~/.cryptian.json` — é seu cofre
+- O arquivo `~/.iansec.json` — é seu cofre
 
 **O que não importa se vazar:**
 - O código fonte (está aqui, é público — princípio de Kerckhoffs)
@@ -162,16 +162,16 @@ cryptian_backup_20260317_143022.json
 ## Estrutura
 
 ```
-cryptian.py          ← tudo em um arquivo, sem dependências extras além do cryptography
-~/.cryptian.json     ← seu cofre (nunca vai para o repositório)
-~/.cryptian_config.json  ← destinos de backup (nunca vai para o repositório)
+iansec.py          ← tudo em um arquivo, sem dependências extras além do cryptography
+~/.iansec.json     ← seu cofre (nunca vai para o repositório)
+~/.iansec_config.json  ← destinos de backup (nunca vai para o repositório)
 ```
 
 ---
 
 ## Filosofia
 
-O Cryptian nasceu como um exercício de aprender criptografia do zero — entender cada peça antes de usar. Não é só uma ferramenta, é a materialização de conceitos:
+O IAN-SEC nasceu como um exercício de aprender criptografia do zero — entender cada peça antes de usar. Não é só uma ferramenta, é a materialização de conceitos:
 
 - **XOR** como base de toda criptografia simétrica
 - **Funções de mão única** que não têm retorno
@@ -179,7 +179,7 @@ O Cryptian nasceu como um exercício de aprender criptografia do zero — entend
 - **Iterações custosas** contra força bruta
 - **Autenticação** além de confidencialidade
 
-Se você quer entender como o Cryptian funciona por dentro, o código é intencionalmente legível e comentado.
+Se você quer entender como o IAN-SEC funciona por dentro, o código é intencionalmente legível e comentado.
 
 ---
 
